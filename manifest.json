@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "Article Assistant",
+    "version": "1.0",
+    "permissions": [
+      "tabs",
+      "activeTab",
+      "scripting",
+      "storage",
+      "contextMenus",
+      "sidePanel"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "side_panel": {
+      "default_path": "sidepanel.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://*/*"],
+        "js": ["constants.js", "content.js"],
+        "run_at": "document_end"
+      }
+    ],
+    "icons": {},
+    "minimum_chrome_version": "116"
+  }
+  

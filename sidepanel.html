@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Article Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="container">
+    <h1>Article Assistant</h1>
+    <div id="chatContainer" style="height: 90vh; overflow-y: auto; padding: 1rem; border: 1px solid #ccc; border-radius: 8px;">
+      <!-- Chat messages -->
+    </div>
+    <div markdown="1" id="thinking"></div>
+    <textarea id="chatbotInput" style="resize:vertical" placeholder="Type your question about this page..."></textarea>
+    <button id="sendBtn">Send</button>
+  </div>
+  <script src="constants.js"></script>  <!-- import before for constants -->
+  <script src="sidepanel.js"></script>
+</body>
+</html>

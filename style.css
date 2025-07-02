@@ -1,0 +1,87 @@
+/* Reset body & html margins to maximize panel space */
+html, body {
+  height: 100%;
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat container takes all available height minus input bar */
+#chatContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Message bubbles */
+.user-message, .assistant-message, .system-message {
+  max-width: 80%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 18px;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  display: inline-block;
+}
+
+/* User messages on right */
+.user-message {
+  align-self: flex-end;
+  background-color: #d0eaff;
+  color: #333;
+}
+
+/* Assistant/system messages on left */
+.assistant-message, .system-message {
+  align-self: flex-start;
+  background-color: #e8e8e8;
+  color: #333;
+}
+
+/* System message italic style */
+.system-message {
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* Input area container */
+.input-container {
+  display: flex;
+  padding: 0.75rem;
+  gap: 0.5rem;
+  border-top: 1px solid #ccc;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Input bar */
+#chatbotInput {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  width: 80%;
+  font-size: 0.95rem;
+}
+
+/* Send button */
+#sendBtn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 16px;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+#sendBtn:hover {
+  background-color: #357ab8;
+}
