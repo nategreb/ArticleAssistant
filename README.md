@@ -78,13 +78,3 @@ HTTP/1.1 403 Forbidden
 ```
 
 Double-check your environment variable and restart Ollama.
-
----
-
-## 🔧 Development TODOs
-
-- Add ESLint + linter config for consistent code quality
-- Support dynamically switching models via extension settings
-- Store conversation history using `chrome.storage`
-- Improve UX with better markdown rendering
-- Improve converation state

@@ -15,7 +15,7 @@ const MessagePerson = Object.freeze({
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     switch (message.type) {
       case MessageTypes.LLM_RESPONSE:
-        appendMessage(MessagePerson.ASSISTANT, message.response)
+        appendMessage(MessagePerson.ASSISTANT, parseMarkdownToHTML(message.response))
         const systemMessages = document.getElementsByClassName("system-message")
         while (systemMessages.length > 0) {
           systemMessages[0].remove();
@@ -78,10 +78,26 @@ function appendMessage(sender, text) {
       console.error("Unknown message sender: " + sender);
       break;
   }
-  messageDiv.textContent = text;
+  messageDiv.innerHTML = text;
   chatContainer.appendChild(messageDiv);
 
   // Scroll to bottom
   chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
+// chrome extension CSP prevents importing external scripts so adding a simple alg with regex;
+// alternative to this is just re-using some open source code with a MIT licence but need to make sure it doesn't
+// also have dependencies.
+function parseMarkdownToHTML(text) {
+  let html = text;
+
+  html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  html = html.replace(/\*(.*?)\*/g, "<em>$1</em>");
+  html = html.replace(/`(.*?)`/g, "<code>$1</code>");
+  html = html.replace(/\n/g, "<br>");
+  html = html.replace(/(?:^|\n)[*-] (.*?)(?=\n|$)/g, "<li>$1</li>");
+  if (html.includes("<li>")) {
+    html = "<ul>" + html + "</ul>";
+  }
+  return html;
+}

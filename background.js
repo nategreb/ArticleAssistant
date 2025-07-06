@@ -15,7 +15,7 @@ const ConversationState = (() => {
 	const followUpPrompt = `
 			I'm reading the article I provided to you earlier. From what you can remember,
 			can you help answer my query?. If you're unsure, just make an educated guess and guide
-			the reader with helpful ways to figure it out.` 
+			the reader with helpful ways to figure it out. Answer with markdown text.` 
 	const initPrompt = `You are an article helper. I'm providing you an article to remember and help
 			readers if they have any questions.`
   
@@ -73,10 +73,10 @@ const ConversationState = (() => {
 	  async sendLLMMessage() {
 			prompt = this.getLLMMessageWithContext()
 			console.log(`sending message ${prompt}`)
-			const response = await fetch("http://localhost:11434/api/generate", {  //TODO: magic string
+			const response = await fetch("http://localhost:11434/api/generate", {  //TODO: magic string and use the '/chat' endpoint etc. more in the docs
 				method: "POST",
 				headers: { 
-					"Content-Type": "application/json",
+					"Content-Type": "application/json", 
 					"Access-Control-Allow-Origin": "localhost" // TODO
 				},
 				body: prompt // TODO: look into Ollama structured output

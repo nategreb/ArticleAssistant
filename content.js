@@ -28,15 +28,3 @@ function sendBackgroundWorkerPageContext() {
       text: pageText
     });
 }
-
-const button = new DOMParser().parseFromString(
-    '<button>Click to open Article Assistant</button>',
-    'text/html'
-).body.firstElementChild;
-
-button.addEventListener('click', function () {
-    chrome.runtime.sendMessage({ type: MessageTypes.OPEN_SIDE_PANEL});
-});
-
-document.body.prepend(button);
-
